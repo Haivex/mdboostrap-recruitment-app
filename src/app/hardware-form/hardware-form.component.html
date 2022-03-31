@@ -1,0 +1,11 @@
+<div>
+  <h1>Add hardware</h1>
+  <form [formGroup] = "hardwareData" (ngSubmit) = "createHardware(hardwareData.value)">
+  <label>Name: <input type="text" placeholder="Hardware name" formControlName="hardwareName" required /></label>
+  <label>Description: <textarea type="text" placeholder="Description"></textarea>
+  </label>
+  <label>Category: <input type="select" formControlName="category" placeholder="Select category" required/></label>
+  <label>Price: <input type="number" placeholder="Price" formControlName="price" required /></label>
+  <input type="submit" value="Create"  />
+  </form>
+</div>
