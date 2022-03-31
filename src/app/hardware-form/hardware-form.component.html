@@ -23,13 +23,19 @@
     </label>
     <label
       >Category:
-      <input
+      <select
         type="select"
         formControlName="category"
         id="category"
         placeholder="Select category"
-        required
-    /></label>
+        required>
+        <option value="" disabled>---Select category---</option>
+        <option value="podzespoły komputera">podzespoły komputera</option>
+        <option value="urządzenia peryferyjne">urządzenia peryferyjne</option>
+        <option value="oprogramowanie">oprogramowanie</option>
+        <option value="inne">inne</option>
+      </select>
+      </label>
     <p
       *ngIf=" category.invalid && (category.dirty || category.touched) && category.errors?.['required']"
     >
