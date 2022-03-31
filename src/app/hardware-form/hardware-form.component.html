@@ -1,11 +1,56 @@
 <div>
   <h1>Add hardware</h1>
-  <form [formGroup] = "hardwareData" (ngSubmit) = "createHardware(hardwareData.value)">
-  <label>Name: <input type="text" placeholder="Hardware name" formControlName="hardwareName" required /></label>
-  <label>Description: <textarea type="text" placeholder="Description"></textarea>
-  </label>
-  <label>Category: <input type="select" formControlName="category" placeholder="Select category" required/></label>
-  <label>Price: <input type="number" placeholder="Price" formControlName="price" required /></label>
-  <input type="submit" value="Create"  />
+  <form
+    [formGroup]="hardwareData"
+    (ngSubmit)="createHardware(hardwareData.value)"
+  >
+    <label
+      >Name:
+      <input
+        type="text"
+        id="hardwareName"
+        placeholder="Hardware name"
+        formControlName="hardwareName"
+        required
+    /></label>
+    <p
+      *ngIf="hardwareName.invalid && (hardwareName.dirty || hardwareName.touched) && hardwareName.errors?.['required']"
+    >
+      Name is required.
+    </p>
+    <label
+      >Description: <textarea type="text" placeholder="Description"></textarea>
+    </label>
+    <label
+      >Category:
+      <input
+        type="select"
+        formControlName="category"
+        id="category"
+        placeholder="Select category"
+        required
+    /></label>
+    <p
+      *ngIf=" category.invalid && (category.dirty || category.touched) && category.errors?.['required']"
+    >
+      Category is required.
+  </p>
+    <label
+      >Price:
+      <input
+        min="0"
+        type="number"
+        id="price"
+        placeholder="Price"
+        formControlName="price"
+        required
+    /></label>
+    <p
+      *ngIf="price.invalid && (price.dirty || price.touched) && price?.errors?.['min']"
+    >
+      Price cannot be below zero.
+    </p>
+    <p>Form Status: {{ hardwareData.status }}</p>
+    <input type="submit" value="Create" [disabled]="!hardwareData.valid " />
   </form>
 </div>
