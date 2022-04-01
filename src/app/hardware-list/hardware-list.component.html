@@ -1,0 +1,18 @@
+<table *ngIf="hardwareList && hardwareList.length > 0" aria-label="Hardware list">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let hardware of hardwareList">
+        <tr>
+            <td>{{hardware.name}}</td>
+            <td>{{hardware.description}}</td>
+            <td>{{hardware.category}}</td>
+            <td>{{hardware.price}}</td>
+        </tr>
+    </tbody>
+</table>
