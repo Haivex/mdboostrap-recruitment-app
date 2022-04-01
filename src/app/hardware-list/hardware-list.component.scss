@@ -1,0 +1,29 @@
+th,
+td {
+  padding: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+th, .total {
+  background: #6c7ae0;
+  text-align: left;
+  font-weight: normal;
+  font-size: 1.1rem;
+  color: white;
+}
+
+th:last-child {
+  border: 0;
+}
+
+td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #808080;
+  text-align: left;
+}
+
+tr:nth-child(even), td:not(.total) td {
+  background: #f8f6ff;
+}

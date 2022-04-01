@@ -1,4 +1,7 @@
-<table *ngIf="hardwareList && hardwareList.length > 0" aria-label="Hardware list">
+<table
+  *ngIf="hardwareList && hardwareList.length > 0"
+  aria-label="Hardware list"
+>
   <thead>
     <tr>
       <th>Name</th>
@@ -9,18 +12,18 @@
   </thead>
   <tbody>
     <tr *ngFor="let hardware of hardwareList">
-      <td>{{hardware.name}}</td>
-      <td>{{hardware.description}}</td>
-      <td>{{hardware.category}}</td>
-      <td>{{hardware.price.toFixed(2)}}</td>
+      <td>{{ hardware.name }}</td>
+      <td>{{ hardware.description }}</td>
+      <td>{{ hardware.category }}</td>
+      <td>{{ hardware.price.toFixed(2) }}</td>
     </tr>
     <tr>
-      <td colspan="3">Total price</td>
-      <td>{{sumPrices()}}</td>
+      <td class="total" colspan="3">Total price</td>
+      <td>{{ sumPrices() }}</td>
     </tr>
     <tr>
-      <td colspan="3">Total products</td>
-      <td>{{getNumberOfPositions()}}</td>
+      <td class="total" colspan="3">Total products</td>
+      <td>{{ getNumberOfPositions() }}</td>
     </tr>
   </tbody>
 </table>
