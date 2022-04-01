@@ -7,8 +7,8 @@
             <th>Price</th>
         </tr>
     </thead>
-    <tbody *ngFor="let hardware of hardwareList">
-        <tr>
+    <tbody>
+        <tr *ngFor="let hardware of hardwareList">
             <td>{{hardware.name}}</td>
             <td>{{hardware.description}}</td>
             <td>{{hardware.category}}</td>
