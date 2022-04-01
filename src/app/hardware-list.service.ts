@@ -12,7 +12,13 @@ export class HardwareListService {
 
   private hardwareList: HardwareRecord[] = [];
 
-  constructor() { }
+  constructor() {
+    const hardwareListInLocalStorage = localStorage.getItem('table')
+    if(hardwareListInLocalStorage)
+    {
+      this.hardwareList = JSON.parse(hardwareListInLocalStorage)
+    }
+  }
 
   get() {
     return this.hardwareList;
@@ -23,9 +29,11 @@ export class HardwareListService {
       ...hardware,
       id: new Date().getTime(),
     })
+    localStorage.setItem('table', JSON.stringify(this.hardwareList));
   }
 
   remove(id: number) {
     this.hardwareList = this.hardwareList.filter(el => el.id !== id);
+    localStorage.setItem('table', JSON.stringify(this.hardwareList));
   }
 }
