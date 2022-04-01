@@ -12,14 +12,14 @@
       <td>{{hardware.name}}</td>
       <td>{{hardware.description}}</td>
       <td>{{hardware.category}}</td>
-      <td>{{hardware.price}}</td>
+      <td>{{hardware.price.toFixed(2)}}</td>
     </tr>
     <tr>
-      <td>Total price</td>
+      <td colspan="3">Total price</td>
       <td>{{sumPrices()}}</td>
     </tr>
     <tr>
-      <td>Total products</td>
+      <td colspan="3">Total products</td>
       <td>{{getNumberOfPositions()}}</td>
     </tr>
   </tbody>
