@@ -1,18 +1,26 @@
 <table *ngIf="hardwareList && hardwareList.length > 0" aria-label="Hardware list">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let hardware of hardwareList">
-            <td>{{hardware.name}}</td>
-            <td>{{hardware.description}}</td>
-            <td>{{hardware.category}}</td>
-            <td>{{hardware.price}}</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hardware of hardwareList">
+      <td>{{hardware.name}}</td>
+      <td>{{hardware.description}}</td>
+      <td>{{hardware.category}}</td>
+      <td>{{hardware.price}}</td>
+    </tr>
+    <tr>
+      <td>Total price</td>
+      <td>{{sumPrices()}}</td>
+    </tr>
+    <tr>
+      <td>Total products</td>
+      <td>{{getNumberOfPositions()}}</td>
+    </tr>
+  </tbody>
 </table>

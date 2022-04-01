@@ -19,4 +19,14 @@ export class HardwareListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  sumPrices() {
+    return this.hardwareList.reduce((sum, currentHardware) => {
+      return sum + currentHardware.price;
+    }, 0).toFixed(2);
+  }
+
+  getNumberOfPositions() {
+    return this.hardwareList.length;
+  }
+
 }
