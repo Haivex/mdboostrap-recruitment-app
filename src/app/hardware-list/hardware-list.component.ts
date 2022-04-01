@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HardwareRecord } from '../hardware-list.service';
+import { HardwareListService, HardwareRecord } from '../hardware-list.service';
 
 @Component({
   selector: 'app-hardware-list',
@@ -9,8 +9,12 @@ import { HardwareRecord } from '../hardware-list.service';
 export class HardwareListComponent implements OnInit {
 
   hardwareList: HardwareRecord[] = [];
+  service: HardwareListService;
 
-  constructor() { }
+  constructor(service: HardwareListService ) {
+    this.service = service
+    this.hardwareList = this.service.get();
+  }
 
   ngOnInit(): void {
   }

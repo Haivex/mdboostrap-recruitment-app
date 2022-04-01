@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, AbstractControl  } from '@angular/forms';
+import { HardwareListService } from '../hardware-list.service';
 
 export interface HardwareData {
   name: string;
@@ -15,6 +16,8 @@ export interface HardwareData {
 })
 export class HardwareFormComponent implements OnInit {
 
+  private service: HardwareListService;
+
   hardwareData = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl(''),
@@ -22,7 +25,7 @@ export class HardwareFormComponent implements OnInit {
     price: new FormControl('', Validators.min(0)),
   })
 
-  constructor() { }
+  constructor(service: HardwareListService) { this.service = service}
 
   ngOnInit(): void {
 
@@ -30,7 +33,7 @@ export class HardwareFormComponent implements OnInit {
 
   createHardware(data: HardwareData) {
     if (!this.hardwareData.valid) return;
-    console.log(data);
+    this.service.add(data)
   }
 
   get name() {
