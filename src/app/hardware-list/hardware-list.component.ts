@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HardwareData } from '../hardware-form/hardware-form.component';
+import { HardwareRecord } from '../hardware-list.service';
 
 @Component({
   selector: 'app-hardware-list',
@@ -8,7 +8,7 @@ import { HardwareData } from '../hardware-form/hardware-form.component';
 })
 export class HardwareListComponent implements OnInit {
 
-  hardwareList: HardwareData[] = [];
+  hardwareList: HardwareRecord[] = [];
 
   constructor() { }
 
