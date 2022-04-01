@@ -1,8 +1,9 @@
-<div>
+<div class="formComponent">
   <h1>Add hardware</h1>
   <form
     [formGroup]="hardwareData"
     (ngSubmit)="createHardware(hardwareData.value)"
+    class="form"
   >
     <label
       >Name:
@@ -18,14 +19,16 @@
     >
       Name is required.
     </p>
-    <label
+    <div class="description">
+    <label 
       >Description:
-      <textarea
+      <textarea class="description"
         formControlName="description"
         type="text"
         placeholder="Description"
       ></textarea>
     </label>
+    </div>
     <label
       >Category:
       <select
