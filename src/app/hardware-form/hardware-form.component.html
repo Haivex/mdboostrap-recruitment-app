@@ -19,7 +19,12 @@
       Name is required.
     </p>
     <label
-      >Description: <textarea type="text" placeholder="Description"></textarea>
+      >Description:
+      <textarea
+        formControlName="description"
+        type="text"
+        placeholder="Description"
+      ></textarea>
     </label>
     <label
       >Category:
@@ -28,19 +33,20 @@
         formControlName="category"
         id="category"
         placeholder="Select category"
-        required>
+        required
+      >
         <option value="" disabled>---Select category---</option>
         <option value="podzespoły komputera">podzespoły komputera</option>
         <option value="urządzenia peryferyjne">urządzenia peryferyjne</option>
         <option value="oprogramowanie">oprogramowanie</option>
         <option value="inne">inne</option>
       </select>
-      </label>
+    </label>
     <p
       *ngIf=" category.invalid && (category.dirty || category.touched) && category.errors?.['required']"
     >
       Category is required.
-  </p>
+    </p>
     <label
       >Price:
       <input
@@ -57,6 +63,6 @@
       Price cannot be below zero.
     </p>
     <p>Form Status: {{ hardwareData.status }}</p>
-    <input type="submit" value="Create" [disabled]="!hardwareData.valid " />
+    <input type="submit" value="Create" [disabled]="!hardwareData.valid" />
   </form>
 </div>
