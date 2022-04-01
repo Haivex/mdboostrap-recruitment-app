@@ -65,7 +65,7 @@
     >
       Price cannot be below zero.
     </p>
-    <p>Form Status: {{ hardwareData.status }}</p>
+    <p>Form Status: <span [ngClass]="hardwareData.status == 'INVALID' ? 'invalid' : 'valid'">{{ hardwareData.status }}</span></p>
     <input type="submit" value="Create" [disabled]="!hardwareData.valid" />
   </form>
 </div>
