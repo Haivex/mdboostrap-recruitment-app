@@ -8,13 +8,13 @@
       >Name:
       <input
         type="text"
-        id="hardwareName"
+        id="name"
         placeholder="Hardware name"
-        formControlName="hardwareName"
+        formControlName="name"
         required
     /></label>
     <p
-      *ngIf="hardwareName.invalid && (hardwareName.dirty || hardwareName.touched) && hardwareName.errors?.['required']"
+      *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.['required']"
     >
       Name is required.
     </p>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, AbstractControl  } from '@angular/forms';
 
-interface HardwareData {
-  hardwareName: string;
+export interface HardwareData {
+  name: string;
   description: string;
   category: string;
   price: number;
@@ -16,7 +16,7 @@ interface HardwareData {
 export class HardwareFormComponent implements OnInit {
 
   hardwareData = new FormGroup({
-    hardwareName: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
     description: new FormControl(''),
     category: new FormControl(''),
     price: new FormControl('', Validators.min(0)),
@@ -33,8 +33,8 @@ export class HardwareFormComponent implements OnInit {
     console.log(data);
   }
 
-  get hardwareName() {
-    return this.hardwareData.get('hardwareName') as AbstractControl;
+  get name() {
+    return this.hardwareData.get('name') as AbstractControl;
   }
 
   get price() {
