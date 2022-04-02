@@ -1,29 +1,37 @@
-<table
-  *ngIf="hardwareList && hardwareList.length > 0"
-  aria-label="Hardware list"
->
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let hardware of hardwareList">
-      <td>{{ hardware.name }}</td>
-      <td>{{ hardware.description }}</td>
-      <td>{{ hardware.category }}</td>
-      <td>{{ hardware.price.toFixed(2) | currency:'PLN':'symbol':'1.2-2':'pl' }}</td>
-    </tr>
-    <tr>
-      <td class="total" colspan="3">Total price</td>
-      <td>{{ sumPrices() | currency:'PLN':'symbol':'1.2-2':'pl' }}</td>
-    </tr>
-    <tr>
-      <td class="total" colspan="3">Total products</td>
-      <td>{{ getNumberOfPositions() }}</td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <table
+    *ngIf="hardwareList && hardwareList.length > 0"
+    aria-label="Hardware list"
+    #hardwareTable
+  >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hardware of hardwareList">
+        <td>{{ hardware.name }}</td>
+        <td>{{ hardware.description }}</td>
+        <td>{{ hardware.category }}</td>
+        <td>
+          {{
+            hardware.price.toFixed(2) | currency: "PLN":"symbol":"1.2-2":"pl"
+          }}
+        </td>
+      </tr>
+      <tr>
+        <td class="total" colspan="3">Total price</td>
+        <td>{{ sumPrices() | currency: "PLN":"symbol":"1.2-2":"pl" }}</td>
+      </tr>
+      <tr>
+        <td class="total" colspan="3">Total products</td>
+        <td>{{ getNumberOfPositions() }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="printTable()">Print</button>
+</div>
