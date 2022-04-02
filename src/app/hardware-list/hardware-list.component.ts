@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HardwareListService, HardwareRecord } from '../hardware-list.service';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
+registerLocaleData(localePl, 'pl');
 
 @Component({
   selector: 'app-hardware-list',
