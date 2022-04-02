@@ -20,7 +20,10 @@ export class HardwareListService {
     }
   }
 
-  get() {
+  get(category?: string) {
+    if(category) {
+      return this.hardwareList.filter(el => el.category == category);
+    }
     return this.hardwareList;
   }
 

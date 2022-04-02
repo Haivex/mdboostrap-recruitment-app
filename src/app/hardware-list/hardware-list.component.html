@@ -1,4 +1,11 @@
 <div>
+  <select [formControl]="category" (ngModelChange)="changeCategory(category.value)">
+    <option value="all">All</option>
+    <option value="podzespoły komputera">Podzespoły komputera</option>
+    <option value="urządzenia peryferyjne">Urządzenia peryferyjne</option>
+    <option value="oprogramowanie">Oprogramowanie</option>
+    <option value="inne">Inne</option>
+  </select>
   <table
     *ngIf="hardwareList && hardwareList.length > 0"
     aria-label="Hardware list"

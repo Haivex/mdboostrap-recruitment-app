@@ -1,6 +1,7 @@
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { HardwareListService, HardwareRecord } from '../hardware-list.service';
 registerLocaleData(localePl, 'pl');
 
@@ -11,6 +12,7 @@ registerLocaleData(localePl, 'pl');
 })
 export class HardwareListComponent implements OnInit {
   hardwareList: HardwareRecord[] = [];
+  category = new FormControl('all');
   service: HardwareListService;
   @ViewChild('hardwareTable') hardwareTable:
     | ElementRef<HTMLTableElement>
@@ -33,6 +35,14 @@ export class HardwareListComponent implements OnInit {
 
   getNumberOfPositions() {
     return this.hardwareList.length;
+  }
+
+  changeCategory(category?: string) {
+    if (category == 'all') {
+      this.hardwareList = this.service.get();
+      return
+    }
+    this.hardwareList = this.service.get(category);
   }
 
   printTable() {
