@@ -14,21 +14,22 @@
         formControlName="name"
         required
     /></label>
-    <p
+    <p class="fieldError"
       *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.['required']"
     >
       Name is required.
     </p>
     <div class="description">
-    <label
-      >Description:
-      <textarea class="description"
-        formControlName="description"
-        type="text"
-        placeholder="Description"
-        rows="5"
-      ></textarea>
-    </label>
+      <label
+        >Description:
+        <textarea
+          class="description"
+          formControlName="description"
+          type="text"
+          placeholder="Description"
+          rows="5"
+        ></textarea>
+      </label>
     </div>
     <label
       >Category:
@@ -46,7 +47,7 @@
         <option value="inne">inne</option>
       </select>
     </label>
-    <p
+    <p class="fieldError"
       *ngIf=" category.invalid && (category.dirty || category.touched) && category.errors?.['required']"
     >
       Category is required.
@@ -62,11 +63,23 @@
         required
     /></label>
     <p
+      class="fieldError"
       *ngIf="price.invalid && (price.dirty || price.touched) && price?.errors?.['min']"
     >
       Price cannot be below zero.
     </p>
-    <p>Form Status: <span [ngClass]="hardwareData.status == 'INVALID' ? 'invalid' : 'valid'">{{ hardwareData.status }}</span></p>
+    <p class="fieldError"
+      *ngIf="price.invalid && (price.dirty || price.touched) && price?.errors?.['required']"
+    >
+      Price is required
+    </p>
+    <p>
+      Form Status:
+      <span
+        [ngClass]="hardwareData.status == 'INVALID' ? 'invalid' : 'valid'"
+        >{{ hardwareData.status }}</span
+      >
+    </p>
     <input type="submit" value="Create" [disabled]="!hardwareData.valid" />
   </form>
 </div>
