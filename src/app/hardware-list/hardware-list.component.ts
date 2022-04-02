@@ -2,6 +2,7 @@ import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { HardwareListService, HardwareRecord } from '../hardware-list.service';
 registerLocaleData(localePl, 'pl');
 
@@ -14,6 +15,7 @@ export class HardwareListComponent implements OnInit {
   hardwareList: HardwareRecord[] = [];
   category = new FormControl('all');
   service: HardwareListService;
+  private _subscription: Subscription;
   @ViewChild('hardwareTable') hardwareTable:
     | ElementRef<HTMLTableElement>
     | undefined;
@@ -21,9 +23,17 @@ export class HardwareListComponent implements OnInit {
   constructor(service: HardwareListService) {
     this.service = service;
     this.hardwareList = this.service.get();
+    this._subscription = this.service.hardwareListChange.subscribe((value) => {
+      this.hardwareList = value;
+      this.changeCategory(this.category.value);
+    });
   }
 
   ngOnInit(): void {}
+
+  ngOnDestroy() {
+     this._subscription.unsubscribe();
+   }
 
   sumPrices() {
     return this.hardwareList
@@ -35,6 +45,10 @@ export class HardwareListComponent implements OnInit {
 
   getNumberOfPositions() {
     return this.hardwareList.length;
+  }
+
+  deletePosition(positionId: number) {
+    this.service.remove(positionId);
   }
 
   changeCategory(category?: string) {

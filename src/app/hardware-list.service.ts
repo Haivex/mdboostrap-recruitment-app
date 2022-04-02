@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { HardwareData } from './hardware-form/hardware-form.component';
 
 export interface HardwareRecord extends HardwareData {
@@ -11,6 +12,7 @@ export interface HardwareRecord extends HardwareData {
 export class HardwareListService {
 
   private hardwareList: HardwareRecord[] = [];
+  hardwareListChange: Subject<HardwareRecord[]> = new Subject<HardwareRecord[]>();
 
   constructor() {
     const hardwareListInLocalStorage = localStorage.getItem('table')
@@ -33,10 +35,12 @@ export class HardwareListService {
       id: new Date().getTime(),
     })
     localStorage.setItem('table', JSON.stringify(this.hardwareList));
+    this.hardwareListChange.next(this.hardwareList)
   }
 
   remove(id: number) {
     this.hardwareList = this.hardwareList.filter(el => el.id !== id);
     localStorage.setItem('table', JSON.stringify(this.hardwareList));
+    this.hardwareListChange.next(this.hardwareList)
   }
 }
