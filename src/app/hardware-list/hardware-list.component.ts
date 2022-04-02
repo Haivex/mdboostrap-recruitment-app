@@ -37,6 +37,11 @@ export class HardwareListComponent implements OnInit {
     return this.hardwareList.length;
   }
 
+  deletePosition(positionId: number) {
+    this.service.remove(positionId);
+    this.changeCategory(this.category.value);
+  }
+
   changeCategory(category?: string) {
     if (category == 'all') {
       this.hardwareList = this.service.get();
