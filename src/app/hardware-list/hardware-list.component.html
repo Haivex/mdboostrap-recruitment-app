@@ -1,5 +1,8 @@
 <div>
-  <select [formControl]="category" (ngModelChange)="changeCategory(category.value)">
+  <select
+    [formControl]="category"
+    (ngModelChange)="changeCategory(category.value)"
+  >
     <option value="all">All</option>
     <option value="podzespoły komputera">Podzespoły komputera</option>
     <option value="urządzenia peryferyjne">Urządzenia peryferyjne</option>
@@ -13,10 +16,10 @@
   >
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Category</th>
-        <th>Price</th>
+        <th (click)="orderBy('name')">Name</th>
+        <th (click)="orderBy('description')">Description</th>
+        <th (click)="orderBy('category')">Category</th>
+        <th (click)="orderBy('price')">Price</th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +32,9 @@
             hardware.price.toFixed(2) | currency: "PLN":"symbol":"1.2-2":"pl"
           }}
         </td>
-        <td class='deleteButton' (click)="deletePosition(hardware.id)">Delete</td>
+        <td class="deleteButton" (click)="deletePosition(hardware.id)">
+          Delete
+        </td>
       </tr>
       <tr>
         <td class="total" colspan="3">Total price</td>
