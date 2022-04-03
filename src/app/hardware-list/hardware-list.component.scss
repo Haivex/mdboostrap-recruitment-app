@@ -33,7 +33,6 @@ tr:nth-child(even), td:not(.total) td {
 }
 
 .deleteButton {
-  cursor: pointer !important;
   text-decoration: underline;
   border: none;
   background-color: #fff;
@@ -62,6 +61,11 @@ tbody.cdk-drop-list-dragging tr:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-td:not(.total) {
+.dragHandle {
   cursor: move;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  left: -10px;
 }

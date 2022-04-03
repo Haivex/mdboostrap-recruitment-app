@@ -6,12 +6,14 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { AppComponent } from './app.component';
 import { HardwareFormComponent } from './hardware-form/hardware-form.component';
 import { HardwareListComponent } from './hardware-list/hardware-list.component';
+import { HamburgerMenuComponent } from './hamburger-menu/hamburger-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HardwareFormComponent,
-    HardwareListComponent
+    HardwareListComponent,
+    HamburgerMenuComponent
   ],
   imports: [
     BrowserModule,
