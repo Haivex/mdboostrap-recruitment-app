@@ -16,10 +16,10 @@
   >
     <thead>
       <tr>
-        <th (click)="orderBy('name')">Name</th>
-        <th (click)="orderBy('description')">Description</th>
-        <th (click)="orderBy('category')">Category</th>
-        <th (click)="orderBy('price')">Price</th>
+        <th (click)="orderBy('name')" (dblclick)="orderByReverse('name')">Name</th>
+        <th (click)="orderBy('description')" (dblclick)="orderByReverse('description')">Description</th>
+        <th (click)="orderBy('category')" (dblclick)="orderByReverse('category')">Category</th>
+        <th (click)="orderBy('price')" (dblclick)="orderByReverse('price')">Price</th>
       </tr>
     </thead>
     <tbody>

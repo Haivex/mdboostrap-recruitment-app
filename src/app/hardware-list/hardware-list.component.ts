@@ -99,4 +99,7 @@ export class HardwareListComponent implements OnInit {
       return 0;
     });
   }
+  orderByReverse(column: keyof HardwareRecord) {
+    return this.orderBy(column).reverse();
+  }
 }
