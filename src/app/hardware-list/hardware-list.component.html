@@ -49,8 +49,11 @@
             hardware.price.toFixed(2) | currency: "PLN":"symbol":"1.2-2":"pl"
           }}
         </td>
-        <td class="deleteButton" (click)="deletePosition(hardware.id)">
+        <td class="actionButton" (click)="deletePosition(hardware.id)">
           Delete
+        </td>
+        <td class="actionButton" (click)="editPosition(hardware)">
+          Edit
         </td>
       </tr>
     </tbody>

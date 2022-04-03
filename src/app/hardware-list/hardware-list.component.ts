@@ -52,6 +52,10 @@ export class HardwareListComponent implements OnInit {
     this.service.remove(positionId);
   }
 
+  editPosition(hardwareRecord: HardwareRecord) {
+    this.service.setCurrentEdited(hardwareRecord);
+  }
+
   changeCategory(category?: string) {
     if (category == 'all') {
       this.hardwareList = this.service.get();
@@ -105,6 +109,6 @@ export class HardwareListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<HardwareRecord>) {
-    moveItemInArray(this.hardwareList, event.previousIndex, event.currentIndex)
+    moveItemInArray(this.hardwareList, event.previousIndex, event.currentIndex);
   }
 }
