@@ -32,8 +32,8 @@ export class HardwareListComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnDestroy() {
-     this._subscription.unsubscribe();
-   }
+    this._subscription.unsubscribe();
+  }
 
   sumPrices() {
     return this.hardwareList
@@ -54,7 +54,7 @@ export class HardwareListComponent implements OnInit {
   changeCategory(category?: string) {
     if (category == 'all') {
       this.hardwareList = this.service.get();
-      return
+      return;
     }
     this.hardwareList = this.service.get(category);
   }
@@ -78,5 +78,28 @@ export class HardwareListComponent implements OnInit {
       windowToPrint.document.close();
       windowToPrint.print();
     }
+  }
+
+  orderBy(column: keyof HardwareRecord) {
+    if (typeof this.hardwareList[0][column] == 'string')
+      return this.hardwareList.sort((a, b) => {
+        let keyNameA = a[column];
+        let keyNameB = b[column];
+        if (keyNameA < keyNameB) return -1;
+        if (keyNameA > keyNameB) return 1;
+        return 0;
+      });
+
+    return this.hardwareList.sort((a, b) => {
+      let keyNameA = a[column];
+      let keyNameB = b[column];
+      if (typeof keyNameA == 'number' && typeof keyNameB == 'number') {
+        return keyNameA - keyNameB;
+      }
+      return 0;
+    });
+  }
+  orderByReverse(column: keyof HardwareRecord) {
+    return this.orderBy(column).reverse();
   }
 }
