@@ -33,6 +33,7 @@ tr:nth-child(even), td:not(.total) td {
 }
 
 .deleteButton {
+  cursor: pointer;
   text-decoration: underline;
   border: none;
   background-color: #fff;
