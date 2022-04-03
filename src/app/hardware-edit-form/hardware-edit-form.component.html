@@ -1,0 +1,89 @@
+<div class="transparentLayer" *ngIf="currentEdited" (click)="cancelEditing($event)">
+<dialog [open]="currentEdited">
+<div class="formComponent">
+  <h2>Edit hardware</h2>
+  <form
+    [formGroup]="hardwareData"
+    (ngSubmit)="editHardware(hardwareData.value)"
+    class="form"
+  >
+    <label
+      >Name:
+      <input
+        type="text"
+        id="name"
+        placeholder="Hardware name"
+        formControlName="name"
+        required
+    /></label>
+    <p class="fieldError"
+      *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.['required']"
+    >
+      Name is required.
+    </p>
+    <div class="description">
+      <label
+        >Description:
+        <textarea
+          class="description"
+          formControlName="description"
+          type="text"
+          placeholder="Description"
+          rows="5"
+        ></textarea>
+      </label>
+    </div>
+    <label
+      >Category:
+      <select
+        type="select"
+        formControlName="category"
+        id="category"
+        placeholder="Select category"
+        required
+      >
+        <option value="" disabled>---Select category---</option>
+        <option value="podzespoły komputera">podzespoły komputera</option>
+        <option value="urządzenia peryferyjne">urządzenia peryferyjne</option>
+        <option value="oprogramowanie">oprogramowanie</option>
+        <option value="inne">inne</option>
+      </select>
+    </label>
+    <p class="fieldError"
+      *ngIf=" category.invalid && (category.dirty || category.touched) && category.errors?.['required']"
+    >
+      Category is required.
+    </p>
+    <label
+      >Price:
+      <input
+        min="0"
+        type="number"
+        id="price"
+        placeholder="Price"
+        formControlName="price"
+        required
+    /></label>
+    <p
+      class="fieldError"
+      *ngIf="price.invalid && (price.dirty || price.touched) && price?.errors?.['min']"
+    >
+      Price cannot be below zero.
+    </p>
+    <p class="fieldError"
+      *ngIf="price.invalid && (price.dirty || price.touched) && price?.errors?.['required']"
+    >
+      Price is required
+    </p>
+    <p>
+      Form Status:
+      <span
+        [ngClass]="hardwareData.status == 'INVALID' ? 'invalid' : 'valid'"
+        >{{ hardwareData.status }}</span
+      >
+    </p>
+    <input type="submit" value="Create" [disabled]="!hardwareData.valid" />
+  </form>
+</div>
+</dialog>
+</div>
