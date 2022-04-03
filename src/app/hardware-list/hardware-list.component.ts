@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -101,5 +102,9 @@ export class HardwareListComponent implements OnInit {
   }
   orderByReverse(column: keyof HardwareRecord) {
     return this.orderBy(column).reverse();
+  }
+
+  drop(event: CdkDragDrop<HardwareRecord>) {
+    moveItemInArray(this.hardwareList, event.previousIndex, event.currentIndex)
   }
 }
