@@ -1,8 +1,8 @@
 <div class="formComponent">
-  <h1>Add hardware</h1>
+  <h1>{{formTitle}}</h1>
   <form
     [formGroup]="hardwareData"
-    (ngSubmit)="createHardware(hardwareData.value)"
+    (ngSubmit)="submitAction(hardwareData.value)"
     class="form"
   >
     <label
@@ -80,6 +80,6 @@
         >{{ hardwareData.status }}</span
       >
     </p>
-    <input type="submit" value="Create" [disabled]="!hardwareData.valid" />
+    <input type="submit" [value]="submitButtonText" [disabled]="!hardwareData.valid" />
   </form>
 </div>
