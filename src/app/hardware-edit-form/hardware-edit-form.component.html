@@ -1,0 +1,14 @@
+<div
+  class="transparentLayer"
+  *ngIf="currentEditedRecord"
+  (click)="cancelEditing($event)"
+>
+  <dialog [open]="currentEditedRecord">
+    <app-hardware-form
+      formTitle="Edit hardware"
+      [submitAction]="editHardware"
+      submitButtonText="Edit"
+      [prefilledHardwareData]="hardwareData.value"
+    ></app-hardware-form>
+  </dialog>
+</div>

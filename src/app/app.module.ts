@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { HardwareFormComponent } from './hardware-form/hardware-form.component';
 import { HardwareListComponent } from './hardware-list/hardware-list.component';
 import { HamburgerMenuComponent } from './hamburger-menu/hamburger-menu.component';
+import { HardwareEditFormComponent } from './hardware-edit-form/hardware-edit-form.component';
+import { HardwareCreateFormComponent } from './hardware-create-form/hardware-create-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HardwareFormComponent,
     HardwareListComponent,
-    HamburgerMenuComponent
+    HamburgerMenuComponent,
+    HardwareEditFormComponent,
+    HardwareCreateFormComponent
   ],
   imports: [
     BrowserModule,

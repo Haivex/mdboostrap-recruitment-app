@@ -13,8 +13,11 @@ export class HardwareListService {
 
   private hardwareList: HardwareRecord[] = [];
   hardwareListChange: Subject<HardwareRecord[]> = new Subject<HardwareRecord[]>();
+  currentEditedChange: Subject<HardwareRecord | null> = new Subject<HardwareRecord | null>();
+  currentEdited: HardwareRecord | null;
 
   constructor() {
+    this.currentEdited = null;
     const hardwareListInLocalStorage = localStorage.getItem('table')
     if(hardwareListInLocalStorage)
     {
@@ -36,6 +39,22 @@ export class HardwareListService {
     })
     localStorage.setItem('table', JSON.stringify(this.hardwareList));
     this.hardwareListChange.next(this.hardwareList)
+  }
+
+  edit(id: number, editedData: Partial<HardwareData>) {
+    let foundElement = this.hardwareList.find(hardware => hardware.id == id);
+    if(foundElement) {
+      foundElement = Object.assign(foundElement, editedData);
+      this.hardwareListChange.next(this.hardwareList);
+      this.currentEdited = null;
+      this.currentEditedChange.next(this.currentEdited);
+      localStorage.setItem('table', JSON.stringify(this.hardwareList));
+    }
+  }
+
+  setCurrentEdited(hardware: HardwareRecord) {
+    this.currentEdited = hardware;
+    this.currentEditedChange.next(this.currentEdited);
   }
 
   remove(id: number) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, AbstractControl  } from '@angular/forms';
 import { HardwareListService } from '../hardware-list.service';
 
@@ -15,8 +15,12 @@ export interface HardwareData {
   styleUrls: ['./hardware-form.component.scss']
 })
 export class HardwareFormComponent implements OnInit {
+  @Input('submitAction') submitAction: (hardware: HardwareData) => unknown = (hardware: HardwareData) => null;
+  @Input('formTitle') formTitle: string = '';
+  @Input('submitButtonText') submitButtonText: string = '';
+  @Input('prefilledHardwareData')prefilledHardwareData?: HardwareData
 
-  private service: HardwareListService;
+  protected service: HardwareListService;
 
   hardwareData = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -28,12 +32,9 @@ export class HardwareFormComponent implements OnInit {
   constructor(service: HardwareListService) { this.service = service}
 
   ngOnInit(): void {
-
-  }
-
-  createHardware(data: HardwareData) {
-    if (!this.hardwareData.valid) return;
-    this.service.add(data)
+    if(this.prefilledHardwareData) {
+      this.hardwareData.setValue(this.prefilledHardwareData);
+    }
   }
 
   get name() {
