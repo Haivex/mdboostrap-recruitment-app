@@ -8,6 +8,7 @@
     <option value="urządzenia peryferyjne">Urządzenia peryferyjne</option>
     <option value="oprogramowanie">Oprogramowanie</option>
     <option value="inne">Inne</option>
+    <option *ngFor="let additionalCategory of additionalCategories">{{additionalCategory}}</option>
   </select>
   <table
     *ngIf="hardwareList && hardwareList.length > 0"

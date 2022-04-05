@@ -17,6 +17,8 @@ export class HardwareListComponent implements OnInit {
   category = new FormControl('all');
   service: HardwareListService;
   private _subscription: Subscription;
+  additionalCategories: string[] = [];
+
   @ViewChild('hardwareTable') hardwareTable:
     | ElementRef<HTMLTableElement>
     | undefined;
@@ -24,6 +26,7 @@ export class HardwareListComponent implements OnInit {
   constructor(service: HardwareListService) {
     this.service = service;
     this.hardwareList = this.service.get();
+    this.additionalCategories = this.service.additionalCategories;
     this._subscription = this.service.hardwareListChange.subscribe((value) => {
       this.hardwareList = value;
       this.changeCategory(this.category.value);

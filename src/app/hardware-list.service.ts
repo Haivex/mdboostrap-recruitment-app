@@ -15,6 +15,7 @@ export class HardwareListService {
   hardwareListChange: Subject<HardwareRecord[]> = new Subject<HardwareRecord[]>();
   currentEditedChange: Subject<HardwareRecord | null> = new Subject<HardwareRecord | null>();
   currentEdited: HardwareRecord | null;
+  additionalCategories: string[] = [];
 
   constructor() {
     this.currentEdited = null;
@@ -22,6 +23,11 @@ export class HardwareListService {
     if(hardwareListInLocalStorage)
     {
       this.hardwareList = JSON.parse(hardwareListInLocalStorage)
+    }
+    const additionalCategoriesInLocalStorage = localStorage.getItem('additionalCategories')
+    if(additionalCategoriesInLocalStorage)
+    {
+      this.additionalCategories = JSON.parse(additionalCategoriesInLocalStorage)
     }
   }
 
@@ -61,5 +67,10 @@ export class HardwareListService {
     this.hardwareList = this.hardwareList.filter(el => el.id !== id);
     localStorage.setItem('table', JSON.stringify(this.hardwareList));
     this.hardwareListChange.next(this.hardwareList)
+  }
+
+  addCategory(category: string) {
+    this.additionalCategories.push(category);
+    localStorage.setItem('additionalCategories', JSON.stringify(this.additionalCategories));
   }
 }

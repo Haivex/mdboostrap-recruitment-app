@@ -15,12 +15,13 @@ export interface HardwareData {
   styleUrls: ['./hardware-form.component.scss']
 })
 export class HardwareFormComponent implements OnInit {
-  @Input('submitAction') submitAction: (hardware: HardwareData) => unknown = (hardware: HardwareData) => null;
+  @Input('submitAction') submitAction: (hardware: HardwareData) => unknown = (_hardware: HardwareData) => null;
   @Input('formTitle') formTitle: string = '';
   @Input('submitButtonText') submitButtonText: string = '';
   @Input('prefilledHardwareData')prefilledHardwareData?: HardwareData
 
   protected service: HardwareListService;
+  additionalCategories: string[] = [];
 
   hardwareData = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -29,7 +30,9 @@ export class HardwareFormComponent implements OnInit {
     price: new FormControl('', Validators.min(0)),
   })
 
-  constructor(service: HardwareListService) { this.service = service}
+  constructor(service: HardwareListService) { this.service = service
+    this.additionalCategories = this.service.additionalCategories;
+  }
 
   ngOnInit(): void {
     if(this.prefilledHardwareData) {

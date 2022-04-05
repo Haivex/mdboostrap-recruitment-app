@@ -45,6 +45,7 @@
         <option value="urządzenia peryferyjne">urządzenia peryferyjne</option>
         <option value="oprogramowanie">oprogramowanie</option>
         <option value="inne">inne</option>
+        <option *ngFor="let category of additionalCategories" [value]="category">{{category}}</option>
       </select>
     </label>
     <p class="fieldError"
