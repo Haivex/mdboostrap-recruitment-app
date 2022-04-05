@@ -18,6 +18,7 @@ export class AddCategoryComponent implements OnInit {
   }
 
   addCategory() {
+    if(this.category.errors) return;
     this.service.addCategory(this.category.value)
     this.category.reset();
   }
