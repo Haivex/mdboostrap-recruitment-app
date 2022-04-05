@@ -70,3 +70,13 @@ tbody.cdk-drop-list-dragging tr:not(.cdk-drag-placeholder) {
   position: relative;
   left: -10px;
 }
+
+button {
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+span {
+  font-weight: bold;
+}

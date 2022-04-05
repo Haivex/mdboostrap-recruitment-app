@@ -1,4 +1,6 @@
 <div>
+  <label>
+    <span>Show categories:</span>
   <select
     [formControl]="category"
     (ngModelChange)="changeCategory(category.value)"
@@ -10,6 +12,7 @@
     <option value="inne">Inne</option>
     <option *ngFor="let additionalCategory of additionalCategories">{{additionalCategory}}</option>
   </select>
+</label>
   <table
     *ngIf="hardwareList && hardwareList.length > 0"
     aria-label="Hardware list"

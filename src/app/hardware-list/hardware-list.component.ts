@@ -10,7 +10,7 @@ registerLocaleData(localePl, 'pl');
 @Component({
   selector: 'app-hardware-list',
   templateUrl: './hardware-list.component.html',
-  styleUrls: ['./hardware-list.component.scss'],
+  styleUrls: ['./hardware-list.component.scss', '../hardware-form/hardware-form.component.scss'],
 })
 export class HardwareListComponent implements OnInit {
   hardwareList: HardwareRecord[] = [];
