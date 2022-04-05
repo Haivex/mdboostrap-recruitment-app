@@ -9,6 +9,7 @@ import { HardwareListComponent } from './hardware-list/hardware-list.component';
 import { HamburgerMenuComponent } from './hamburger-menu/hamburger-menu.component';
 import { HardwareEditFormComponent } from './hardware-edit-form/hardware-edit-form.component';
 import { HardwareCreateFormComponent } from './hardware-create-form/hardware-create-form.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HardwareCreateFormComponent } from './hardware-create-form/hardware-cre
     HardwareListComponent,
     HamburgerMenuComponent,
     HardwareEditFormComponent,
-    HardwareCreateFormComponent
+    HardwareCreateFormComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
