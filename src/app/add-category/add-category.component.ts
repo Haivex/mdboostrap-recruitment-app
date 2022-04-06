@@ -5,7 +5,7 @@ import { HardwareListService } from '../hardware-list.service';
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.scss']
+  styleUrls: ['./add-category.component.scss', '../hardware-form/hardware-form.component.scss']
 })
 export class AddCategoryComponent implements OnInit {
 
@@ -18,6 +18,7 @@ export class AddCategoryComponent implements OnInit {
   }
 
   addCategory() {
+    if(this.category.errors) return;
     this.service.addCategory(this.category.value)
     this.category.reset();
   }
