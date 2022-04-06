@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f46b9f77-bc9b-4134-a44f-dedaf1333b3f/deploy-status)](https://app.netlify.com/sites/haivex-hardware-costs-estimate/deploys)
+
 # Hardware cost estimate
 
 ## About
