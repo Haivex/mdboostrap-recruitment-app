@@ -5,6 +5,9 @@
 ## About
 This is my first Angular project. I made this project for job recruitment. You can add, search, edit and filter hardware cost estimate.
 
+## Demo
+Here is demo: [Link](https://haivex-hardware-costs-estimate.netlify.app/)
+
 ## Features
 - sort data by column - single click on column header for ascending, double click on column header for descending
 - drag & drop table rows
