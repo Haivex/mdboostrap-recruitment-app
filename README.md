@@ -1,14 +1,23 @@
-# MdbootstrapRecruitmentApp
+# Hardware cost estimate
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+## About
+This is my first Angular project. I made this project for job recruitment. You can add, search, edit and filter hardware cost estimate.
 
-## Development server
+## Features
+- sort data by column - single click on column header for ascending, double click on column header for descending
+- drag & drop table rows
+- print table
+- edit and delete position
+- filter data by category
+- add your own category
+- calculate cost and number of positions by category
+- Data are saved in localStorage
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Run locally
 
-## Code scaffolding
+- Clone this repository `https://github.com/Haivex/mdbootstrap-recruitment-app`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build
 
@@ -21,7 +30,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
