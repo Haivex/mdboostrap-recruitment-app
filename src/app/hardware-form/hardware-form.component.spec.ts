@@ -62,10 +62,15 @@ describe('HardwareFormComponent', () => {
     };
     component.ngOnInit();
 
+    const inputPrice = componentElement.querySelector(
+      'input[id="price"]'
+    ) as HTMLInputElement;
+
     fixture.detectChanges();
     expect(component.hardwareData.value).toEqual(
       component.prefilledHardwareData
     );
+    expect(inputPrice.value).toBe('123');
   });
 
   it('should update form data when user inputs', () => {
