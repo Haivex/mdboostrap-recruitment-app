@@ -129,4 +129,61 @@ describe('HardwareFormComponent', () => {
       description: 'test description2',
     });
   });
+
+  it('should render additionalCategories', () => {
+    component.additionalCategories = ['test category'];
+    fixture.detectChanges();
+
+    const optionElement = componentElement.querySelector(
+      'option[value="test category"]'
+    ) as HTMLOptionElement;
+    expect(optionElement.textContent).toBe('test category');
+  });
+
+  it('should show error when empty field', () => {
+    const inputName = componentElement.querySelector(
+      'input[id="name"]'
+    ) as HTMLInputElement;
+    const errorsElements =
+      componentElement.getElementsByClassName('fieldError');
+
+    expect(errorsElements[0]).toBeUndefined();
+
+    inputName.dispatchEvent(new Event('focus'));
+    inputName.dispatchEvent(new Event('blur'));
+    fixture.detectChanges();
+
+    expect(errorsElements[0]).toBeDefined();
+  });
+
+  it('button should be disabled when form is wrong or empty and not disabled when all is right', () => {
+    const inputPrice = componentElement.querySelector(
+      'input[id="price"]'
+    ) as HTMLInputElement;
+
+    const button = componentElement.querySelector(
+      'input[type="submit"]'
+    ) as HTMLInputElement;
+
+    expect(button.disabled).toBeTrue();
+
+    component.prefilledHardwareData = {
+      category: 'inne',
+      description: 'test description',
+      name: 'test name',
+      price: 123,
+    };
+    component.ngOnInit();
+
+    fixture.detectChanges();
+
+    expect(button.disabled).toBeFalse();
+
+    inputPrice.value = '-1234';
+    inputPrice.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+
+    expect(button.disabled).toBeTrue();
+  });
 });
