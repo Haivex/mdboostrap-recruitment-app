@@ -86,7 +86,7 @@ describe('HardwareFormComponent', () => {
     expect(expect(component.hardwareData.value.price).toEqual(1234));
   });
 
-  it('should update form data when user inputs', () => {
+  it('should call submitAction with form data', () => {
     const inputPrice = componentElement.querySelector(
       'input[id="price"]'
     ) as HTMLInputElement;
